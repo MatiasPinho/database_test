@@ -36,7 +36,7 @@ export class ProductCt {
       ? res.status(201).json({ message: "product created" })
       : res.status(500).json({ message: "internal server error" });
   }
-  static async updatedOne(req, res) {
+  static async updateOne(req, res) {
     const { id } = req.params;
     const isValidID = isValidUUID(id);
     if (!isValidID) {
@@ -46,7 +46,7 @@ export class ProductCt {
     if (!isProduct.length) {
       return res.status(400).json({ message: "Product not found" });
     }
-    const updateProduct = await ProductMd.updatedOne(id, req.body);
+    const updateProduct = await ProductMd.updateOne(id, req.body);
     updateProduct
       ? res.status(201).json({ message: "product Updated" })
       : res.status(500).json({ message: "internal server error" });
